@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+
+import argparse
+import subprocess
+import requests
+import json
+import sys
+import os
+import requests
+
+def main():
+  parser = argparse.ArgumentParser(description='Checks to see if a given file contains a certain string and then returns a JSON.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+  parser.add_argument('--input-file', type=str, help='file input')
+  args = parser.parse_args()
+
+  result = check_file(args.input_file)
+
+  if (result == 0) {
+    print('{ "Overall" : "PASS", "Steps" : { "md5sum_check" : "PASS" } }')
+  } else {
+    print('{ "Overall" : "FAIL", "Steps" : { "md5sum_check" : "FAIL" } }')
+  }
+
+  # correct way to do this?
+  return(result)
+
+def check_file(input_file):
+  file = open(input_file, “r”)
+  contents = file.read()
+  if (contents == '00579a00e3e7fa0674428ac7049423e2'):
+    print("Contents match")
+    return(0)
+  else:
+    return(1)

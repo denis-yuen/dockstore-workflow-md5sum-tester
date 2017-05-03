@@ -16,9 +16,9 @@ def main():
   result = check_file(args.input_file)
 
   if (result == 0) {
-    print('{ "Overall" : "PASS", "Steps" : { "md5sum_check" : "PASS" } }')
+    print('{ "Overall" : true, "Steps" : { "md5sum_check" : true } }')
   } else {
-    print('{ "Overall" : "FAIL", "Steps" : { "md5sum_check" : "FAIL" } }')
+    print('{ "Overall" : false, "Steps" : { "md5sum_check" : false } }')
   }
 
   # correct way to do this?

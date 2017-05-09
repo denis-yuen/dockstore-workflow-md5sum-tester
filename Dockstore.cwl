@@ -31,11 +31,16 @@ inputs:
     doc: The file that will have its md5sum calculated.
 
 outputs:
-  output_file:
+  results_file:
     type: File
-    format: http://edamontology.org/data_3671
     outputBinding:
-      glob: md5sum.txt
-    doc: A text file that contains a single line that is the md5sum of the input file.
+      glob: results.json
+    doc: A json file that contains the result of the test.
+
+  log_file:
+    type: File
+    outputBinding:
+      glob: log.txt
+    doc: A text log file that contains more details.
 
 baseCommand: [/bin/my_md5sum]

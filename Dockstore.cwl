@@ -1,19 +1,19 @@
 #!/usr/bin/env cwl-runner
 
 class: CommandLineTool
-id: Md5sumChecker
+id: Md5sumWorkflowChecker
 label: A tool that checks the md5sum workflow
 cwlVersion: v1.0
 
 doc: |
   [![Docker Repository on Quay.io](https://quay.io/repository/briandoconnor/dockstore-tool-md5sum/status "Docker Repository on Quay.io")](https://quay.io/repository/briandoconnor/dockstore-tool-md5sum)
   [![Build Status](https://travis-ci.org/briandoconnor/dockstore-tool-md5sum.svg)](https://travis-ci.org/briandoconnor/dockstore-tool-md5sum)
-  A very, very simple Docker container for the md5sum command. See the [README](https://github.com/briandoconnor/dockstore-tool-md5sum/blob/master/README.md) for more information.
+  A very, very simple Docker container that checks the output of the https://github.com/briandoconnor/dockstore-workflow-md5sum workflow. This was used in the GA4GH/DREAM Infrastructure Challenge Phase 2.  See the [README](https://github.com/briandoconnor/dockstore-workflow-md5sum-tester/blob/master/README.md) for more information.
 
 
 requirements:
 - class: DockerRequirement
-  dockerPull: quay.io/briandoconnor/dockstore-tool-md5sum:1.0.3
+  dockerPull: quay.io/briandoconnor/dockstore-workflow-md5sum-tester:1.0.0
 - class: InlineJavascriptRequirement
 
 hints:
@@ -28,7 +28,9 @@ inputs:
     type: File
     inputBinding:
       position: 1
-    doc: The file that will have its md5sum calculated.
+      prefix: --input-file
+    doc: The file that contains an md5sum.
+
 
 outputs:
   results_file:
@@ -43,4 +45,4 @@ outputs:
       glob: log.txt
     doc: A text log file that contains more details.
 
-baseCommand: [/bin/my_md5sum]
+baseCommand: [/bin/check_md5sum]

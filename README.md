@@ -14,6 +14,10 @@ schema-salad==1.18.20161005190847
 avro==1.8.1
 ```
 
+## Building Docker
+
+    docker build -t quay.io/briandoconnor/dockstore-workflow-md5sum-tester:1.0.0 .
+
 ## CWL Testing
 
 How to execute this tool using the CWL descriptor via the Dockstore command line (which calls the `cwltool` command behind the scenes).
@@ -25,7 +29,7 @@ directions to setup the CLI.  It lets you run a Docker container with a CWL desc
 
 #### Make a Parameters JSON
 
-This is the parameterization of the md5sum workflow, a copy is present in this repo called `Dockstore.json`:
+This is the parameterization of the md5sum checker tool, a copy is present in this repo called `Dockstore.json`:
 
 ```
 {
@@ -33,20 +37,24 @@ This is the parameterization of the md5sum workflow, a copy is present in this r
         "class": "File",
         "path": "md5sum.input"
     },
-    "output_file": {
+    "results_file": {
         "class": "File",
-        "path": "/tmp/md5sum.txt"
+        "path": "/tmp/results.json"
+    },
+    "log_file": {
+        "class": "File",
+        "path": "/tmp/log.txt"
     }
 }
 ```
 
-You will also see a `Dockstore.yml` file which is the same but with the "output_file" removed. This means when you run it via the Dockstore CLI you need to find the output by looking at the cwltool STDOUT e.g. look at this file:
+You will also see a `Dockstore.inputs.json` file which is the same but with the outputs removed. This means when you run it via the Dockstore CLI you need to find the output by looking at the cwltool STDOUT e.g. look at this file:
 
     Saving copy of cwltool stdout to: /Users/boconnor/Development/gitroot/dockstore-tool-md5sum/./datastore/launcher-002bcb21-11e2-47d4-96f5-fb542eb48bb5/outputs/cwltool.stdout.txt
 
 This will tell you the location of the output md5sum file.
 
-You might need to use this "output_file" free `test.json` if you are executing a more strict CWL execution engine like Arvados.
+You might need to use this `Dockstore.inputs.json` if you are executing a more strict CWL execution engine like Arvados.
 
 #### Run with the CWL CLI
 
@@ -65,7 +73,7 @@ Or you can run it from the latest release on Dockstore:
 
 ```
 # run this from the Dockstore
-$> dockstore workflow launch --entry briandoconnor/dockstore-workflow-md5sum:1.0.0 --json Dockstore.json
+$> dockstore workflow launch --entry quay.io/briandoconnor/dockstore-workflow-md5sum-tester:1.0.0 --json Dockstore.json
 ```
 
 ## Test with travis-ci

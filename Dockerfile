@@ -11,6 +11,9 @@ MAINTAINER Brian O'Connor <briandoconnor@gmail.com>
 # Setup packages
 USER root
 
+# python3
+RUN apt-get update && apt-get install --yes python3
+
 # copy over the script
 COPY bin/check_md5sum /bin/
 RUN chmod a+x /bin/check_md5sum

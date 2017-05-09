@@ -2,11 +2,9 @@
 
 import argparse
 import subprocess
-import requests
 import json
 import sys
 import os
-import requests
 
 def main():
   parser = argparse.ArgumentParser(description='Checks to see if a given file contains a certain string and then returns a JSON.', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -16,24 +14,30 @@ def main():
   result = check_file(args.input_file)
 
   results_file  = open("results.json", "w")
-  if (result == 0) {
+  if (result == 0):
     results_file.write('{ "Overall" : true, "Steps" : { "md5sum_check" : true } }')
-  } else {
+  else:
     results_file.write('{ "Overall" : false, "Steps" : { "md5sum_check" : false } }')
-  }
   results_file.close()
 
   log_file  = open("log.txt", "w")
+  log_file.write("")
   log_file.close()
 
   # correct way to do this?
   return(result)
 
 def check_file(input_file):
-  file = open(input_file, “r”)
+  file = open(input_file, "r")
   contents = file.read()
+  contents = contents.rstrip()
+  print ("FILE CONTENTS: "+contents)
   if (contents == '00579a00e3e7fa0674428ac7049423e2'):
     print("Contents match")
     return(0)
   else:
+    print("Contents DO NOT match")
     return(1)
+
+if __name__ == "__main__":
+    main()

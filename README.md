@@ -66,7 +66,7 @@ Run it using the `dockstore` CLI locally with the Dockstore.cwl file (great for 
 
 ```
 # run this locally
-$> dockstore workflow launch --entry Dockstore.cwl --local-entry --json Dockstore.json
+$> dockstore tool launch --entry Dockstore.cwl --local-entry --json Dockstore.json
 ```
 
 Or you can run it from the latest release on Dockstore:

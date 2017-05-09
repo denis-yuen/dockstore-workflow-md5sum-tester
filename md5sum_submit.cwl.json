@@ -1,0 +1,13 @@
+{
+    "config_file": {
+        "class": "File",
+        "path": ""
+    },
+    "team_name": "",
+    "eval_id": "",
+    "file": {
+        "class": "File",
+        "path": "md5sum.result"
+    },
+    "parent_id": ""
+}

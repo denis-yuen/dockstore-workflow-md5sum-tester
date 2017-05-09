@@ -15,9 +15,9 @@ def main():
 
   results_file  = open("results.json", "w")
   if (result == 0):
-    results_file.write('{ "Overall" : true, "Steps" : { "md5sum_check" : true } }')
+    results_file.write('{ "overall" : true, "steps" : { "md5sum_check" : true } }')
   else:
-    results_file.write('{ "Overall" : false, "Steps" : { "md5sum_check" : false } }')
+    results_file.write('{ "overall" : false, "steps" : { "md5sum_check" : false } }')
   results_file.close()
 
   log_file  = open("log.txt", "w")

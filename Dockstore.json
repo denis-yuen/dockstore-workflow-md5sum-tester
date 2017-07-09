@@ -1,7 +1,7 @@
 {
   "input_file": {
         "class": "File",
-        "path": "md5sum.result"
+        "path": "md5sum.txt"
     },
     "results_file": {
         "class": "File",

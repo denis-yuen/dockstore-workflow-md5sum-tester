@@ -2,13 +2,5 @@
   "input_file": {
         "class": "File",
         "path": "md5sum.txt"
-    },
-    "results_file": {
-        "class": "File",
-        "path": "/tmp/results.json"
-    },
-    "log_file": {
-        "class": "File",
-        "path": "/tmp/log.txt"
     }
 }

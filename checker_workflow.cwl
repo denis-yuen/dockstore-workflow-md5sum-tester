@@ -1,6 +1,8 @@
 cwlVersion: v1.0
 class: Workflow
 
+doc: Description of checker workflow here
+
 dct:creator:
   '@id': http://orcid.org/0000-0002-7681-6415
   foaf:name: Brian O'Connor
